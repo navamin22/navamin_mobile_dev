@@ -3,17 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:navamin/src/screens/menu/pokemoninfor.dart';
 import 'package:navamin/src/screens/register/register.dart';
 import 'package:navamin/src/widgets/appBg.dart';
-import 'package:navamin/src/widgets/custom_alert_dialog.dart';
 
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -226,7 +225,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildSocialBtn(Function onTap, AssetImage logo) {
     return GestureDetector(
-      onTap: onTap,
       child: Container(
         height: 60.0,
         width: 60.0,
@@ -250,7 +248,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _googleSignInBtn(Function onTap, AssetImage logo) {
     return GestureDetector(
-      onTap: onTap,
       child: Container(
         height: 60.0,
         width: 60.0,
@@ -365,8 +362,10 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _loginCheck() {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => PokemonPage()));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => PokemonPage(
+              title: '',
+            )));
 
     // _username = userController.text;
     // _password = passController.text;

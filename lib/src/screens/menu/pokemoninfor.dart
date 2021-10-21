@@ -8,7 +8,7 @@ import 'package:navamin/src/widgets/appBg.dart';
 class PokemonPage extends StatefulWidget {
   final String title;
 
-  const PokemonPage({Key key, this.title}) : super(key: key);
+  const PokemonPage({Key? key, required this.title}) : super(key: key);
   @override
   _PokemonPageState createState() => _PokemonPageState();
 }
@@ -67,7 +67,7 @@ class _PokemonPageState extends State<PokemonPage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.grey),
-                    child: Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
@@ -81,7 +81,7 @@ class _PokemonPageState extends State<PokemonPage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.grey),
-                    child: Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
@@ -95,7 +95,7 @@ class _PokemonPageState extends State<PokemonPage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.grey),
-                    child: Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
