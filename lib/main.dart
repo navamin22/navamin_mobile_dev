@@ -4,7 +4,6 @@ import 'package:navamin/src/screens/menu/pokemoninfor.dart';
 import 'package:navamin/src/screens/register/register.dart';
 import 'package:navamin/src/widgets/appBg.dart';
 
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {

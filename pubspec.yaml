@@ -26,7 +26,6 @@ dependencies:
   #Firebase Authentication
   google_sign_in: ^5.1.0
   firebase_auth: ^1.1.4
-  flutter_facebook_login: ^3.0.0
   
 
   # state management
@@ -34,7 +33,7 @@ dependencies:
     
   # UI
   flutter_launcher_icons: ^0.8.0
-  fluttertoast: ^7.1.6
+  fluttertoast: ^8.0.8
   sliding_up_panel: ^1.0.2
   draggable_bottom_sheet: ^0.1.1
   curved_navigation_bar: ^0.3.7
@@ -63,8 +62,6 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/
-    - assets/icons/
     - assets/logos/
     - assets/fonts/
 
