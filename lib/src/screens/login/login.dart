@@ -1,6 +1,8 @@
 // ignore: use_key_in_widget_constructors
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:navamin/src/screens/menu/pokemoninfor.dart';
 import 'package:navamin/src/screens/provider/google_sign_in.dart';
 import 'package:navamin/src/screens/register/register.dart';
@@ -188,6 +190,22 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Future<Null> processSingGoogle() async {
+    GoogleSignIn _googleSignIn = GoogleSignIn(
+      scopes: [
+        'email',
+        'https://www.googleapis.com/auth/contacts.readonly',
+      ],
+    );
+
+    await Firebase.initializeApp().then((value) async {
+      await _googleSignIn.signIn().then((value) {
+        // ignore: avoid_print
+        print('LoginGoogle');
+      });
+    });
+  }
+
   Widget _buildGoogleBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 0.0),
@@ -196,16 +214,16 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 5.0,
         onPressed: () {
 //เปิดฟังก์ชั่นต่อ google
-          // final provider =
-          //     Provider.of<GoogleSignInProvider>(context, listen: false);
-          // provider.googleLogin();
+          final provider =
+              Provider.of<GoogleSignInProvider>(context, listen: false);
+          provider.googleLogin();
+          // print(provider);
+          // processSingGoogle();
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
-          // side: BorderSide(color: Colors.grey, width: 3)
         ),
-        color: Colors.white,
         child: Text(
           'Google',
           style: TextStyle(
@@ -230,7 +248,6 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
-          // side: BorderSide(color: Colors.grey, width: 3)
         ),
         color: Colors.blue[300],
         child: Text(

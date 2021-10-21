@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,6 +12,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterformState extends State<Register> {
+  final FirebaseAuth mAuth = FirebaseAuth.instance;
   final double boxHeight = 30.0;
   final userController = TextEditingController();
   final passController = TextEditingController();
@@ -212,6 +214,10 @@ class _RegisterformState extends State<Register> {
       ),
     );
   }
+
+  // void signUpWithEmailPass() {
+  //   FirebeasUser user
+  // }
 
   @override
   Widget build(BuildContext context) {

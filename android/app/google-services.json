@@ -8,49 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:548823993947:android:64754a8319d338669ab97e",
+        "mobilesdk_app_id": "1:548823993947:android:0bbdccf3332785f59ab97e",
         "android_client_info": {
           "package_name": "com.example.navamin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "548823993947-m4altmajt1duocuhhl4rn0p7v6ooqvj5.apps.googleusercontent.com",
+          "client_id": "548823993947-ug0h2hcmcno6q64lg05l9gu27rv08hi7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.navamin",
-            "certificate_hash": "bfc872605ff24221b1a3262cfe8323cbe5698ebe"
+            "certificate_hash": "fe3e4d886075cea61a9aaf74d2758e5dedaea580"
           }
         },
-        {
-          "client_id": "548823993947-141a6lq6iann9c7jibh717e9gdd21gc5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBO0EomFyJoIVnay5AvVuJ7jZq-f1QRkWo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "548823993947-141a6lq6iann9c7jibh717e9gdd21gc5.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:548823993947:android:e1da7db4d389826a9ab97e",
-        "android_client_info": {
-          "package_name": "com.example.navamin_mobile_dev"
-        }
-      },
-      "oauth_client": [
         {
           "client_id": "548823993947-141a6lq6iann9c7jibh717e9gdd21gc5.apps.googleusercontent.com",
           "client_type": 3
