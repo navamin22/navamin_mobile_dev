@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:navamin/src/utils/control.dart';
 import 'package:navamin/src/utils/toast.call.dart';
 import 'package:navamin/src/widgets/appBg.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -215,10 +216,6 @@ class _RegisterformState extends State<Register> {
     );
   }
 
-  // void signUpWithEmailPass() {
-  //   FirebeasUser user
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -319,5 +316,7 @@ class _RegisterformState extends State<Register> {
     }
   }
 
-  void _checkSpecificString() {}
+  // void signUpWithEmailPassword() {
+  //   FirebaseUser user;
+  // }
 }

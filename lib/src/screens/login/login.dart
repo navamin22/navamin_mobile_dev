@@ -1,4 +1,5 @@
 // ignore: use_key_in_widget_constructors
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -190,22 +191,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Future<Null> processSingGoogle() async {
-    GoogleSignIn _googleSignIn = GoogleSignIn(
-      scopes: [
-        'email',
-        'https://www.googleapis.com/auth/contacts.readonly',
-      ],
-    );
-
-    await Firebase.initializeApp().then((value) async {
-      await _googleSignIn.signIn().then((value) {
-        // ignore: avoid_print
-        print('LoginGoogle');
-      });
-    });
-  }
-
   Widget _buildGoogleBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 0.0),
@@ -213,12 +198,9 @@ class _LoginScreenState extends State<LoginScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-//เปิดฟังก์ชั่นต่อ google
           final provider =
               Provider.of<GoogleSignInProvider>(context, listen: false);
           provider.googleLogin();
-          // print(provider);
-          // processSingGoogle();
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -263,6 +245,37 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+  Widget _buildGoogleBtn2() {
+    return Container(
+      child: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          // ignore: missing_return
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+            } else if (snapshot.hasData) {
+              return PokemonPage();
+            } else {
+              return _buildGoogleBtn();
+            }
+          }),
+    );
+  }
+
+  // Widget build(BuildContext context) => Scaffold(
+  //       body: StreamBuilder(
+  //           stream: FirebaseAuth.instance.authStateChanges(),
+  //           // ignore: missing_return
+  //           builder: (context, snapshot) {
+  //             if (snapshot.connectionState == ConnectionState.waiting) {
+  //               return Center(child: CircularProgressIndicator());
+  //             } else if (snapshot.hasData) {
+  //               return PokemonPage();
+  //             } else {
+  //               return _buildGoogleBtn();
+  //             }
+  //           }),
+  //     );
 
   @override
   Widget build(BuildContext context) {

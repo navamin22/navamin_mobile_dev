@@ -1,14 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:navamin/src/screens/provider/google_sign_in.dart';
 import 'package:navamin/src/utils/colors.dart';
 import 'package:navamin/src/widgets/appBg.dart';
+import 'package:provider/provider.dart';
 
 class PokemonPage extends StatefulWidget {
   final String title;
 
-  const PokemonPage({Key? key, required this.title}) : super(key: key);
+  const PokemonPage({Key key, this.title}) : super(key: key);
   @override
   _PokemonPageState createState() => _PokemonPageState();
 }
@@ -16,25 +20,35 @@ class PokemonPage extends StatefulWidget {
 class _PokemonPageState extends State<PokemonPage> {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Container(
           child: Column(
             children: [
-              Text('ชื่อ-นามสกุล'),
-              Text('Email'),
+              Text('Name: ' + user.displayName,
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
+              Text(
+                'Email: ' + user.email,
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
             ],
           ),
         ),
         titleSpacing: 1,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.person),
+        leading: CircleAvatar(
+          radius: 10,
+          backgroundImage: NetworkImage(user.photoURL),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              final provider =
+                  Provider.of<GoogleSignInProvider>(context, listen: false);
+              provider.logout();
+            },
             icon: Icon(Icons.logout_outlined),
           ),
         ],
