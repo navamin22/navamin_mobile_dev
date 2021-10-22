@@ -57,7 +57,6 @@ class _PokemonPageState extends State<PokemonPage> {
         backgroundColor: Colors.lightGreen[600],
         elevation: 0,
       ),
-
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -125,33 +124,6 @@ class _PokemonPageState extends State<PokemonPage> {
           ),
         ),
       ),
-      // body: AnnotatedRegion<SystemUiOverlayStyle>(
-      //   value: SystemUiOverlayStyle.light,
-      //   child: GestureDetector(
-      //     onTap: () => FocusScope.of(context).unfocus(),
-      //     child: Stack(
-      //       children: <Widget>[
-      //         AppBackground(),
-      //         Container(
-      //           height: double.infinity,
-      //           child: SingleChildScrollView(
-      //             physics: AlwaysScrollableScrollPhysics(),
-      //             padding: EdgeInsets.symmetric(
-      //               horizontal: 10.0,
-      //               vertical: 10.0,
-      //             ),
-      //             child: Column(
-      //               mainAxisAlignment: MainAxisAlignment.center,
-      //               children: <Widget>[
-
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

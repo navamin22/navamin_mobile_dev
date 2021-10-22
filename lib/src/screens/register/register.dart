@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:navamin/src/screens/login/login.dart';
 import 'package:navamin/src/utils/control.dart';
 import 'package:navamin/src/utils/toast.call.dart';
 import 'package:navamin/src/widgets/appBg.dart';
@@ -195,7 +196,7 @@ class _RegisterformState extends State<Register> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: _register,
+        onPressed: signUpWithMail,
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -214,6 +215,32 @@ class _RegisterformState extends State<Register> {
         ),
       ),
     );
+  }
+
+  Future<void> signUpWithMail() async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passController.text,
+      );
+      // showDialog(
+      //     context: context,
+      //     builder: (context) {
+      //       return AlertDialog(
+      //         content: Text('Success sign up'),
+      //       );
+      //     });
+    } catch (e) {
+      print(e.message);
+      _register();
+      // showDialog(
+      //     context: context,
+      //     builder: (context) {
+      //       return AlertDialog(
+      //         content: Text(e.message),
+      //       );
+      //     });
+    }
   }
 
   @override
@@ -312,11 +339,9 @@ class _RegisterformState extends State<Register> {
       toast_short('Special Character is not allow');
     } else {
       toast_short('Register Completed');
-      Navigator.of(context).pop(true);
+      // Navigator.of(context).pop(true);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => LoginScreen()));
     }
   }
-
-  // void signUpWithEmailPassword() {
-  //   FirebaseUser user;
-  // }
 }

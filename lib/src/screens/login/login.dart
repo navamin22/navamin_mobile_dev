@@ -136,10 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => PokemonPage(
-                    title: '',
-                  )));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => PokemonPage()));
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
