@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:navamin/src/screens/menu/pokemoninfor.dart';
+import 'package:navamin/src/screens/menu/pokemoninfor_hotmail.dart';
 import 'package:navamin/src/screens/provider/google_sign_in.dart';
 import 'package:navamin/src/screens/register/register.dart';
+import 'package:navamin/src/utils/toast.call.dart';
 import 'package:navamin/src/widgets/appBg.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool rememberMe = false;
   bool _isHidden = true;
   bool isSignIn = false;
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   void _toggleVisibility() {
     setState(() {
@@ -136,8 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => PokemonPage()));
+          signInWithMail();
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -323,5 +326,41 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> signInWithMail() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: userController.text,
+        password: passController.text,
+      );
+      // showDialog(
+      //     context: context,
+      //     builder: (context) {
+      //       return AlertDialog(
+      //         content: Text('Success sign up'),
+      //       );
+      //     });
+    } catch (e) {
+      print(e.message);
+      _username = userController.text;
+      _password = passController.text;
+      if (_username.isEmpty) {
+        toast_short('Please Fill Username');
+      } else if (_password.isEmpty) {
+        toast_short('Please Fill Password');
+      } else {
+        toast_short('Login complete');
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => PokemonHotmailPage()));
+      }
+      // showDialog(
+      //     context: context,
+      //     builder: (context) {
+      //       return AlertDialog(
+      //         content: Text(e.message),
+      //       );
+      //     });
+    }
   }
 }
