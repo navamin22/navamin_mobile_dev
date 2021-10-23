@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:navamin/src/screens/homepage.dart';
 import 'package:navamin/src/screens/login/login.dart';
 import 'package:navamin/src/screens/menu/pokemoninfor.dart';
 import 'package:navamin/src/screens/provider/google_sign_in.dart';
@@ -25,6 +26,6 @@ class MyApp extends StatelessWidget {
       create: (context) => GoogleSignInProvider(),
       child: MaterialApp(
         theme: ThemeData(),
-        home: LoginScreen(),
+        home: HomePage(),
       ));
 }

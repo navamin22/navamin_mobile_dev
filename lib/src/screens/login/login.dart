@@ -260,21 +260,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // Widget build(BuildContext context) => Scaffold(
-  //       body: StreamBuilder(
-  //           stream: FirebaseAuth.instance.authStateChanges(),
-  //           // ignore: missing_return
-  //           builder: (context, snapshot) {
-  //             if (snapshot.connectionState == ConnectionState.waiting) {
-  //               return Center(child: CircularProgressIndicator());
-  //             } else if (snapshot.hasData) {
-  //               return PokemonPage();
-  //             } else {
-  //               return _buildGoogleBtn();
-  //             }
-  //           }),
-  //     );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
