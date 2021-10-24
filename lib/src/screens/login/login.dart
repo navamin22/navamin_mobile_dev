@@ -10,6 +10,7 @@ import 'package:navamin/src/screens/menu/pokemoninfor.dart';
 import 'package:navamin/src/screens/menu/pokemoninfor_hotmail.dart';
 import 'package:navamin/src/screens/provider/google_sign_in.dart';
 import 'package:navamin/src/screens/register/register.dart';
+import 'package:navamin/src/services/authservice.dart';
 import 'package:navamin/src/utils/toast.call.dart';
 import 'package:navamin/src/widgets/appBg.dart';
 import 'package:provider/provider.dart';
@@ -222,30 +223,6 @@ class _LoginScreenState extends State<LoginScreen> {
           },
         )
       ],
-      // padding: EdgeInsets.symmetric(vertical: 0.0),
-      // width: double.infinity,
-      // child: RaisedButton(
-      //   elevation: 5.0,
-      //   onPressed: () {
-      //     final provider =
-      //         Provider.of<GoogleSignInProvider>(context, listen: false);
-      //     provider.googleLogin();
-      //   },
-      //   padding: EdgeInsets.all(15.0),
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.circular(15.0),
-      //   ),
-      //   child: Text(
-      //     'Google',
-      //     style: TextStyle(
-      //       color: Colors.black,
-      //       letterSpacing: 1.5,
-      //       fontSize: 18.0,
-      //       fontWeight: FontWeight.bold,
-      //       fontFamily: 'OpenSans',
-      //     ),
-      //   ),
-      // ),
     );
   }
 
@@ -254,30 +231,11 @@ class _LoginScreenState extends State<LoginScreen> {
       children: <Widget>[
         SignInButton(
           Buttons.Facebook,
-          onPressed: () {},
+          onPressed: () {
+            // AuthService().fbSignIn();
+          },
         ),
       ],
-      // padding: EdgeInsets.symmetric(vertical: 0.0),
-      // width: double.infinity,
-      // child: RaisedButton(
-      //   elevation: 5.0,
-      //   onPressed: () {},
-      //   padding: EdgeInsets.all(15.0),
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.circular(15.0),
-      //   ),
-      //   color: Colors.blue[300],
-      //   child: Text(
-      //     'Facebook',
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //       letterSpacing: 1.5,
-      //       fontSize: 18.0,
-      //       fontWeight: FontWeight.bold,
-      //       fontFamily: 'OpenSans',
-      //     ),
-      //   ),
-      // ),
     );
   }
 

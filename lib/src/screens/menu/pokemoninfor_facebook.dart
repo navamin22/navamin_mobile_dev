@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:navamin/src/screens/login/login.dart';
 import 'package:navamin/src/screens/provider/google_sign_in.dart';
+import 'package:navamin/src/services/authservice.dart';
 import 'package:provider/provider.dart';
 
 class PokemonFacebookPage extends StatefulWidget {
@@ -37,6 +38,7 @@ class _PokemonFacebookPageState extends State<PokemonFacebookPage> {
         actions: [
           IconButton(
             onPressed: () {
+              // AuthService().signOut();
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => LoginScreen()));
             },
