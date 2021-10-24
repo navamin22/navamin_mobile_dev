@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:navamin/src/screens/login/login.dart';
+import 'package:navamin/src/screens/menu/pokemoninfor_hotmail.dart';
 import 'package:navamin/src/utils/control.dart';
 import 'package:navamin/src/utils/toast.call.dart';
 import 'package:navamin/src/widgets/appBg.dart';
@@ -341,7 +342,7 @@ class _RegisterformState extends State<Register> {
       toast_short('Register Completed');
       // Navigator.of(context).pop(true);
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => LoginScreen()));
+          .push(MaterialPageRoute(builder: (context) => PokemonHotmailPage()));
     }
   }
 }
