@@ -23,11 +23,10 @@ class _PokemonHotmailPageState extends State<PokemonHotmailPage> {
         title: Container(
           child: Column(
             children: [
-              // Text(
-              //   'Email: ' + auth..toString(),
-              //   style: TextStyle(color: Colors.white, fontSize: 16),
-              // ),
-              Text('email'),
+              Text(
+                'Hotmail: ' + auth.toString(),
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
             ],
           ),
         ),

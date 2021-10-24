@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:navamin/src/screens/menu/pokemoninfor.dart';
 import 'package:navamin/src/screens/menu/pokemoninfor_hotmail.dart';
@@ -192,74 +194,90 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildGoogleBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 0.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {
-          final provider =
-              Provider.of<GoogleSignInProvider>(context, listen: false);
-          provider.googleLogin();
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        child: Text(
-          'Google',
+  Widget _buildTextSocial() {
+    return Column(
+      children: <Widget>[
+        SizedBox(height: 40.0),
+        Text(
+          'Social Login',
           style: TextStyle(
-            color: Colors.black,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
+            color: Colors.white,
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
           ),
         ),
-      ),
+      ],
+    );
+  }
+
+  Widget _buildGoogleBtn() {
+    return Column(
+      children: <Widget>[
+        SignInButton(
+          Buttons.Google,
+          onPressed: () {
+            final provider =
+                Provider.of<GoogleSignInProvider>(context, listen: false);
+            provider.googleLogin();
+          },
+        )
+      ],
+      // padding: EdgeInsets.symmetric(vertical: 0.0),
+      // width: double.infinity,
+      // child: RaisedButton(
+      //   elevation: 5.0,
+      //   onPressed: () {
+      //     final provider =
+      //         Provider.of<GoogleSignInProvider>(context, listen: false);
+      //     provider.googleLogin();
+      //   },
+      //   padding: EdgeInsets.all(15.0),
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(15.0),
+      //   ),
+      //   child: Text(
+      //     'Google',
+      //     style: TextStyle(
+      //       color: Colors.black,
+      //       letterSpacing: 1.5,
+      //       fontSize: 18.0,
+      //       fontWeight: FontWeight.bold,
+      //       fontFamily: 'OpenSans',
+      //     ),
+      //   ),
+      // ),
     );
   }
 
   Widget _buildFacebookBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 0.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {},
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+    return Column(
+      children: <Widget>[
+        SignInButton(
+          Buttons.Facebook,
+          onPressed: () {},
         ),
-        color: Colors.blue[300],
-        child: Text(
-          'Facebook',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildGoogleBtn2() {
-    return Container(
-      child: StreamBuilder(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          // ignore: missing_return
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-            } else if (snapshot.hasData) {
-              return PokemonPage();
-            } else {
-              return _buildGoogleBtn();
-            }
-          }),
+      ],
+      // padding: EdgeInsets.symmetric(vertical: 0.0),
+      // width: double.infinity,
+      // child: RaisedButton(
+      //   elevation: 5.0,
+      //   onPressed: () {},
+      //   padding: EdgeInsets.all(15.0),
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(15.0),
+      //   ),
+      //   color: Colors.blue[300],
+      //   child: Text(
+      //     'Facebook',
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //       letterSpacing: 1.5,
+      //       fontSize: 18.0,
+      //       fontWeight: FontWeight.bold,
+      //       fontFamily: 'OpenSans',
+      //     ),
+      //   ),
+      // ),
     );
   }
 
@@ -284,9 +302,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(
-                        height: 40.0,
-                      ),
+                      SizedBox(height: 40.0),
                       Text(
                         'เข้าสู่ระบบ',
                         style: TextStyle(
@@ -296,26 +312,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontFamily: 'OpenSans',
                         ),
                       ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
+                      SizedBox(height: 20.0),
                       _buildUsernameTF(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
+                      SizedBox(height: 10.0),
                       _buildPasswordTF('Password'),
-                      SizedBox(
-                        height: 10.0,
-                      ),
+                      SizedBox(height: 10.0),
                       _buildLoginBtn(),
                       _buildRegisterBtn(),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      _buildTextSocial(),
+                      SizedBox(height: 10),
                       _buildGoogleBtn(),
-                      SizedBox(
-                        height: 20.0,
-                      ),
+                      SizedBox(height: 10.0),
                       _buildFacebookBtn(),
                     ],
                   ),
@@ -334,13 +341,6 @@ class _LoginScreenState extends State<LoginScreen> {
         email: userController.text,
         password: passController.text,
       );
-      // showDialog(
-      //     context: context,
-      //     builder: (context) {
-      //       return AlertDialog(
-      //         content: Text('Success sign up'),
-      //       );
-      //     });
     } catch (e) {
       print(e.message);
       _username = userController.text;
@@ -354,13 +354,6 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => PokemonHotmailPage()));
       }
-      // showDialog(
-      //     context: context,
-      //     builder: (context) {
-      //       return AlertDialog(
-      //         content: Text(e.message),
-      //       );
-      //     });
     }
   }
 }
